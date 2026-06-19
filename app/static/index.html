@@ -3,25 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>0880 Headquarters</title>
+<title>0880 // terminal</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
 <div class="container">
   <header>
-    <h1>0880 Headquarters</h1>
+    <h1>0880 headquarters</h1>
     <div class="header-right">
       <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Add symbol (e.g. AAPL, BTC-USD, EURUSD=X)" />
-        <button id="searchBtn">+</button>
+        <input type="text" id="searchInput" placeholder="symbol lookup... (e.g. AAPL)" />
+        <button id="searchBtn">scan</button>
       </div>
-      <button id="themeToggle" class="icon-btn" title="Toggle theme">🌙</button>
-      <span class="update-badge" id="updateBadge">updating...</span>
+      <button id="themeToggle" class="icon-btn">[dark]</button>
+      <span class="update-badge" id="updateBadge">[ syncing... ]</span>
     </div>
   </header>
 
   <section id="overviewSection">
+    <h2>system overview</h2>
     <div class="overview-grid" id="overviewGrid">
       <div class="overview-card skeleton"><div class="skeleton-line w60"></div><div class="skeleton-line w40"></div></div>
       <div class="overview-card skeleton"><div class="skeleton-line w60"></div><div class="skeleton-line w40"></div></div>
@@ -32,13 +33,13 @@
   </section>
 
   <section id="fearGreedSection">
-    <h2>Fear & Greed Index</h2>
+    <h2>fear &amp; greed index</h2>
     <div class="fear-greed-container">
       <canvas id="fearGreedGauge" width="220" height="220"></canvas>
       <div class="fear-details">
         <div class="fear-value skeleton-inline">--</div>
         <div class="fear-label skeleton-inline">--</div>
-        <div class="fear-prev skeleton-inline">Previous: --</div>
+        <div class="fear-prev skeleton-inline">previous: --</div>
         <div class="fear-bar-track"><div class="fear-bar-fill" id="fearBarFill"></div></div>
       </div>
     </div>
@@ -46,7 +47,7 @@
 
   <section id="stocksSection">
     <div class="section-header">
-      <h2>Stocks Performance</h2>
+      <h2>stocks // performance</h2>
       <span class="section-sub" id="stocksSummary"></span>
     </div>
     <div class="chart-row">
@@ -55,10 +56,10 @@
       </div>
       <div class="chart-box table-box">
         <div class="table-toolbar">
-          <button id="compareStocksBtn">Compare Selected (0)</button>
+          <button id="compareStocksBtn">[ compare: 0 selected ]</button>
         </div>
         <table id="stocksTable">
-          <thead><tr><th><input type="checkbox" id="selectAllStocks"></th><th data-sort="symbol" class="sortable">Ticker <span class="sort-arrow"></span></th><th data-sort="price" class="sortable">Price <span class="sort-arrow"></span></th><th data-sort="change_pct" class="sortable">Chg % <span class="sort-arrow"></span></th><th data-sort="trend" class="sortable">Trend <span class="sort-arrow"></span></th><th data-sort="rsi" class="sortable">Signal <span class="sort-arrow"></span></th></tr></thead>
+          <thead><tr><th><input type="checkbox" id="selectAllStocks"></th><th data-sort="symbol" class="sortable">ticker <span class="sort-arrow"></span></th><th data-sort="price" class="sortable">price <span class="sort-arrow"></span></th><th data-sort="change_pct" class="sortable">chg % <span class="sort-arrow"></span></th><th data-sort="trend" class="sortable">trend <span class="sort-arrow"></span></th><th data-sort="rsi" class="sortable">signal <span class="sort-arrow"></span></th></tr></thead>
           <tbody id="stocksBody"></tbody>
         </table>
       </div>
@@ -67,7 +68,7 @@
 
   <section id="cryptoSection">
     <div class="section-header">
-      <h2>Crypto Predictions</h2>
+      <h2>crypto // predictions</h2>
       <span class="section-sub" id="cryptoSummary"></span>
     </div>
     <div class="chart-row">
@@ -76,7 +77,7 @@
       </div>
       <div class="chart-box table-box">
         <table id="cryptoTable">
-          <thead><tr><th><input type="checkbox" id="selectAllCrypto"></th><th data-sort="symbol" class="sortable">Coin <span class="sort-arrow"></span></th><th data-sort="price" class="sortable">Price <span class="sort-arrow"></span></th><th data-sort="change_pct" class="sortable">Chg % <span class="sort-arrow"></span></th><th data-sort="rsi" class="sortable">RSI <span class="sort-arrow"></span></th><th data-sort="signal" class="sortable">Signal <span class="sort-arrow"></span></th></tr></thead>
+          <thead><tr><th><input type="checkbox" id="selectAllCrypto"></th><th data-sort="symbol" class="sortable">coin <span class="sort-arrow"></span></th><th data-sort="price" class="sortable">price <span class="sort-arrow"></span></th><th data-sort="change_pct" class="sortable">chg % <span class="sort-arrow"></span></th><th data-sort="rsi" class="sortable">rsi <span class="sort-arrow"></span></th><th data-sort="signal" class="sortable">signal <span class="sort-arrow"></span></th></tr></thead>
           <tbody id="cryptoBody"></tbody>
         </table>
       </div>
@@ -85,30 +86,25 @@
 
   <div class="row-split">
     <section id="sectorSection">
-      <h2>Sectors</h2>
+      <h2>sectors</h2>
       <canvas id="sectorChart"></canvas>
     </section>
     <section id="forexSection">
-      <h2>Forex Heatmap</h2>
+      <h2>forex // heatmap</h2>
       <canvas id="forexChart"></canvas>
       <div class="mini-table">
-        <table id="forexTable"><thead><tr><th data-sort="pair" class="sortable">Pair <span class="sort-arrow"></span></th><th data-sort="price" class="sortable">Price <span class="sort-arrow"></span></th><th data-sort="change_pct" class="sortable">Chg % <span class="sort-arrow"></span></th><th data-sort="trend" class="sortable">Trend <span class="sort-arrow"></span></th></tr></thead><tbody id="forexBody"></tbody></table>
+        <table id="forexTable"><thead><tr><th data-sort="pair" class="sortable">pair <span class="sort-arrow"></span></th><th data-sort="price" class="sortable">price <span class="sort-arrow"></span></th><th data-sort="change_pct" class="sortable">chg % <span class="sort-arrow"></span></th><th data-sort="trend" class="sortable">trend <span class="sort-arrow"></span></th></tr></thead><tbody id="forexBody"></tbody></table>
       </div>
     </section>
   </div>
 
-  <section id="weeklySection">
-    <h2>Weekly Performance</h2>
-    <div class="table-wrap"><table id="weeklyTable"><thead><tr><th>Asset</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Avg</th></tr></thead><tbody id="weeklyBody"></tbody></table></div>
-  </section>
-
   <section id="indicatorsSection">
-    <h2>Technical Radar</h2>
+    <h2>technical radar</h2>
     <div class="chart-row">
       <div class="chart-box"><canvas id="radarChart"></canvas></div>
       <div class="chart-box indicators-right">
         <div class="meter-bar">
-          <div class="meter-label">Market Strength</div>
+          <div class="meter-label">market strength</div>
           <div class="meter-track"><div class="meter-fill" id="meterFill" style="width:0%"></div></div>
           <div class="meter-label" id="meterText">--</div>
         </div>
@@ -118,34 +114,39 @@
   </section>
 
   <section id="correlationSection">
-    <h2>Correlation Matrix</h2>
+    <h2>correlation matrix</h2>
     <div class="table-wrap"><div id="correlationGrid"></div></div>
   </section>
 
+  <section id="weeklySection">
+    <h2>weekly performance</h2>
+    <div class="table-wrap"><table id="weeklyTable"><thead><tr><th>asset</th><th>mon</th><th>tue</th><th>wed</th><th>thu</th><th>fri</th><th>avg</th></tr></thead><tbody id="weeklyBody"></tbody></table></div>
+  </section>
+
   <section id="portfolioSection">
-    <h2>My Portfolio</h2>
+    <h2>portfolio // holdings</h2>
     <div class="portfolio-bar">
-      <input type="text" id="portSymbol" placeholder="Symbol" style="width:80px" />
-      <input type="number" id="portQty" placeholder="Qty" step="any" style="width:70px" />
-      <input type="number" id="portPrice" placeholder="Avg Cost" step="any" style="width:90px" />
-      <button id="portAddBtn">Add</button>
+      <input type="text" id="portSymbol" placeholder="symbol" style="width:80px" />
+      <input type="number" id="portQty" placeholder="qty" step="any" style="width:70px" />
+      <input type="number" id="portPrice" placeholder="avg cost" step="any" style="width:90px" />
+      <button id="portAddBtn">track</button>
     </div>
-    <div class="table-wrap"><table id="portfolioTable"><thead><tr><th>Symbol</th><th>Qty</th><th>Avg Cost</th><th>Current</th><th>Value</th><th>P&L</th><th>Return %</th><th></th></tr></thead><tbody id="portfolioBody"></tbody></table></div>
+    <div class="table-wrap"><table id="portfolioTable"><thead><tr><th>symbol</th><th>qty</th><th>avg cost</th><th>current</th><th>value</th><th>p&amp;l</th><th>return %</th><th></th></tr></thead><tbody id="portfolioBody"></tbody></table></div>
   </section>
 
   <section id="watchlistSection">
-    <h2>My Watchlist <span class="badge-alert" id="watchlistBadge">0</span></h2>
-    <div class="table-wrap"><table id="watchlistTable"><thead><tr><th>Symbol</th><th>Price</th><th>Chg %</th><th>RSI</th><th>Signal</th><th></th></tr></thead><tbody id="watchlistBody"></tbody></table></div>
+    <h2>watchlist <span class="badge-alert" id="watchlistBadge">0</span></h2>
+    <div class="table-wrap"><table id="watchlistTable"><thead><tr><th>symbol</th><th>price</th><th>chg %</th><th>rsi</th><th>signal</th><th></th></tr></thead><tbody id="watchlistBody"></tbody></table></div>
   </section>
 
   <section id="alertsSection">
-    <h2>Price Alerts <span class="badge-alert" id="alertBadge">0</span></h2>
+    <h2>price alerts <span class="badge-alert" id="alertBadge">0</span></h2>
     <div class="alerts-bar">
-      <input type="text" id="alertSymbol" placeholder="Symbol (e.g. NVDA)" />
-      <select id="alertCondition"><option value="above">Above</option><option value="below">Below</option></select>
-      <input type="number" id="alertPrice" placeholder="Price" step="any" />
-      <button id="alertAddBtn">Add Alert</button>
-      <button id="alertClearBtn" class="btn-secondary">Clear All</button>
+      <input type="text" id="alertSymbol" placeholder="symbol (e.g. NVDA)" />
+      <select id="alertCondition"><option value="above">above</option><option value="below">below</option></select>
+      <input type="number" id="alertPrice" placeholder="price" step="any" />
+      <button id="alertAddBtn">set</button>
+      <button id="alertClearBtn" class="btn-secondary">clear all</button>
     </div>
     <div id="alertList"></div>
   </section>
@@ -155,10 +156,10 @@
 <div class="modal-overlay" id="compareOverlay" style="display:none">
   <div class="modal" style="max-width:700px">
     <div class="modal-header">
-      <h3>Compare Assets</h3>
-      <button class="modal-close" id="compareClose">&times;</button>
+      <h3>[ compare assets ]</h3>
+      <button class="modal-close" id="compareClose">x</button>
     </div>
-    <div style="margin-bottom:10px;font-size:.8rem;color:#8b949e" id="compareSymbolsList"></div>
+    <div style="margin-bottom:10px;color:var(--text3);font-size:0.7rem" id="compareSymbolsList"></div>
     <div class="mc-chart"><canvas id="compareChart"></canvas></div>
   </div>
 </div>
@@ -172,9 +173,9 @@
         <div class="timeframe-bar" id="timeframeBar">
           <button data-tf="1d">1D</button><button data-tf="5d">5D</button><button data-tf="1mo" class="active">1M</button><button data-tf="3mo">3M</button><button data-tf="6mo">6M</button><button data-tf="1y">1Y</button>
         </div>
-        <button id="csvExportBtn" class="btn-secondary" style="padding:4px 10px;font-size:.75rem">CSV</button>
-        <button id="pdfExportBtn" class="btn-secondary" style="padding:4px 10px;font-size:.75rem">PDF</button>
-        <button class="modal-close" id="modalClose">&times;</button>
+        <button id="csvExportBtn" class="btn-secondary">csv</button>
+        <button id="pdfExportBtn" class="btn-secondary">pdf</button>
+        <button class="modal-close" id="modalClose">x</button>
       </div>
     </div>
     <div class="modal-stats" id="modalStats"></div>
@@ -185,9 +186,9 @@
       <div class="mc-chart"><canvas id="detailVolumeChart"></canvas></div>
     </div>
     <div class="modal-pred" id="modalPred"></div>
-    <div id="newsSection" style="margin-top:14px;padding-top:12px;border-top:1px solid #21262d">
-      <h4 style="font-size:.8rem;color:#8b949e;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">News</h4>
-      <div id="newsList" style="font-size:.75rem;color:#484f58">Loading...</div>
+    <div id="newsSection" style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border)">
+      <h4 style="font-size:0.7rem;color:var(--text3);margin-bottom:8px;letter-spacing:1px">// news feed</h4>
+      <div id="newsList" style="color:var(--text3)">loading...</div>
     </div>
   </div>
 </div>
