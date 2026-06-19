@@ -17,12 +17,12 @@ function ls(k, v) {
 function initTheme() {
   const t = ls('theme') || 'dark';
   document.body.classList.toggle('light', t === 'light');
-  document.getElementById('themeToggle').textContent = t === 'light' ? '[light]' : '[dark]';
+  document.getElementById('themeToggle').textContent = t === 'light' ? '☀️' : '🌙';
 }
 document.getElementById('themeToggle').addEventListener('click', () => {
   const isLight = document.body.classList.toggle('light');
   const t = isLight ? 'light' : 'dark';
-  document.getElementById('themeToggle').textContent = isLight ? '[light]' : '[dark]';
+  document.getElementById('themeToggle').textContent = isLight ? '☀️' : '🌙';
   ls('theme', t);
 });
 
@@ -54,8 +54,8 @@ function renderFearGreed(data) {
   const v = data.value, w = el.width, h = el.height, cx = w / 2, cy = h * 0.65, r = 70;
   ctx.clearRect(0, 0, w, h);
   const segments = [
-    { end: 25, color: '#ff0033' }, { end: 45, color: '#ffb000' },
-    { end: 55, color: '#007722' }, { end: 75, color: '#00e5ff' }, { end: 100, color: '#00ff41' }
+    { end: 25, color: '#f85149' }, { end: 45, color: '#d29922' },
+    { end: 55, color: '#8b949e' }, { end: 75, color: '#58a6ff' }, { end: 100, color: '#3fb950' }
   ];
   let start = -180;
   segments.forEach(s => {
@@ -66,28 +66,28 @@ function renderFearGreed(data) {
   const angle = -180 + (v / 100) * 180;
   const arcRad = angle * Math.PI / 180;
   const nx = cx + (r - 5) * Math.cos(arcRad), ny = cy + (r - 5) * Math.sin(arcRad);
-  ctx.beginPath(); ctx.moveTo(cx, cy + 37); ctx.lineTo(nx, ny); ctx.strokeStyle = '#00ff41'; ctx.lineWidth = 2; ctx.stroke();
-  ctx.beginPath(); ctx.arc(nx, ny, 5, 0, 2 * Math.PI); ctx.fillStyle = '#00ff41'; ctx.fill();
-  ctx.fillStyle = '#00ff41'; ctx.font = 'bold 18px monospace'; ctx.textAlign = 'center';
-  ctx.fillText(v, cx, cy + 85); ctx.font = '11px monospace'; ctx.fillStyle = '#007722';
+  ctx.beginPath(); ctx.moveTo(cx, cy + 37); ctx.lineTo(nx, ny); ctx.strokeStyle = '#f0f6fc'; ctx.lineWidth = 2; ctx.stroke();
+  ctx.beginPath(); ctx.arc(nx, ny, 5, 0, 2 * Math.PI); ctx.fillStyle = '#f0f6fc'; ctx.fill();
+  ctx.fillStyle = '#f0f6fc'; ctx.font = 'bold 18px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(v, cx, cy + 85); ctx.font = '11px sans-serif'; ctx.fillStyle = '#8b949e';
   ctx.fillText(data.label, cx, cy + 100);
   document.querySelector('.fear-value').textContent = data.label;
   document.querySelector('.fear-label').textContent = `Index: ${v}`;
   document.querySelector('.fear-prev').textContent = `Previous: ${data.previous_close || '--'}`;
   document.getElementById('fearBarFill').style.width = v + '%';
-  document.getElementById('fearBarFill').style.background = v < 25 ? '#ff0033' : v < 45 ? '#ffb000' : v < 55 ? '#007722' : v < 75 ? '#00e5ff' : '#00ff41';
+  document.getElementById('fearBarFill').style.background = v < 25 ? '#f85149' : v < 45 ? '#d29922' : v < 55 ? '#8b949e' : v < 75 ? '#58a6ff' : '#3fb950';
 }
 
 // ------ helpers ------
 const CHART_TOOLTIP = {
   enabled: true,
-  backgroundColor: '#0a0a0a',
-  titleColor: '#00ff41',
-  bodyColor: '#00cc33',
-  borderColor: '#1a3a1a',
+  backgroundColor: '#1c2333',
+  titleColor: '#f0f6fc',
+  bodyColor: '#c9d1d9',
+  borderColor: '#30363d',
   borderWidth: 1,
   padding: 8,
-  cornerRadius: 2,
+  cornerRadius: 6,
   displayColors: false,
 };
 
@@ -107,14 +107,14 @@ function signalText(rsi, change) {
   if (change < -2) return 'Strong Down';
   return 'Neutral';
 }
-function trendEmoji(t) { return t === 'uptrend' ? '↑' : t === 'downtrend' ? '↓' : '—' }
+function trendEmoji(t) { return t === 'uptrend' ? '▲' : t === 'downtrend' ? '▼' : '◆' }
 function pctColor(v) { return v >= 0 ? 'green' : 'red' }
 function fmtPct(v) { return v != null ? (v >= 0 ? '+' : '') + v.toFixed(2) + '%' : '—' }
 function spark(prices, w, h) {
   if (!prices || prices.length < 2) return '';
   const min = Math.min(...prices), max = Math.max(...prices), rng = max - min || 1;
   const pts = prices.map((p, i) => `${(i / (prices.length - 1)) * w},${h - ((p - min) / rng) * h * 0.8 - 4}`).join(' ');
-  const color = prices[prices.length - 1] >= prices[0] ? '#00ff41' : '#ff0033';
+  const color = prices[prices.length - 1] >= prices[0] ? '#3fb950' : '#f85149';
   return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><polyline fill="none" stroke="${color}" stroke-width="1.5" points="${pts}"/></svg>`;
 }
 
@@ -229,12 +229,12 @@ function renderStockChart(data) {
   const items = data.stocks || [];
   const symbols = items.slice(0, 20).map(s => s.symbol);
   const changes = items.slice(0, 20).map(s => s.change_pct);
-  const colors = changes.map(v => v >= 0 ? '#00ff41' : '#ff0033');
+  const colors = changes.map(v => v >= 0 ? '#3fb950' : '#f85149');
   stockChart = new Chart(ctx, {
-    type: 'bar', data: { labels: symbols, datasets: [{ label: 'Change %', data: changes, backgroundColor: colors, borderRadius: 2 }] },
+    type: 'bar', data: { labels: symbols, datasets: [{ label: 'Change %', data: changes, backgroundColor: colors, borderRadius: 3 }] },
     options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { display: false }, tooltip: CHART_TOOLTIP },
-      scales: { y: { grid: { color: '#1a3a1a' }, ticks: { color: '#007722', font: { size: 10, family: "'Fira Code','Courier New',monospace" } } },
-               x: { grid: { display: false }, ticks: { color: '#007722', font: { size: 9, family: "'Fira Code','Courier New',monospace" } } } } }
+      scales: { y: { grid: { color: '#21262d' }, ticks: { color: '#8b949e', font: { size: 10 } } },
+               x: { grid: { display: false }, ticks: { color: '#8b949e', font: { size: 9 } } } } }
   });
 }
 
@@ -247,13 +247,13 @@ function renderCryptoChart(data) {
   const rsis = items.map(s => s.rsi || 50);
   cryptoChart = new Chart(ctx, {
     type: 'bar', data: { labels, datasets: [
-      { label: 'Price', data: prices, backgroundColor: '#00e5ff44', borderRadius: 2, yAxisID: 'y' },
-      { label: 'RSI', data: rsis, type: 'line', borderColor: '#ffb000', backgroundColor: 'transparent', pointRadius: 2, tension: .3, yAxisID: 'y1' }
+      { label: 'Price', data: prices, backgroundColor: '#58a6ff66', borderRadius: 3, yAxisID: 'y' },
+      { label: 'RSI', data: rsis, type: 'line', borderColor: '#d29922', backgroundColor: 'transparent', pointRadius: 2, tension: .3, yAxisID: 'y1' }
     ] },
-    options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { labels: { color: '#00cc33', font: { size: 10, family: "'Fira Code','Courier New',monospace" } } }, tooltip: CHART_TOOLTIP },
-      scales: { y: { position: 'left', grid: { color: '#1a3a1a' }, ticks: { color: '#007722', font: { size: 9, family: "'Fira Code','Courier New',monospace" } } },
-               y1: { position: 'right', min: 0, max: 100, grid: { display: false }, ticks: { color: '#ffb000', font: { size: 9, family: "'Fira Code','Courier New',monospace" } } },
-               x: { grid: { display: false }, ticks: { color: '#007722', font: { size: 9, family: "'Fira Code','Courier New',monospace" } } } } }
+    options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { labels: { color: '#8b949e', font: { size: 10 } } }, tooltip: CHART_TOOLTIP },
+      scales: { y: { position: 'left', grid: { color: '#21262d' }, ticks: { color: '#8b949e', font: { size: 9 } } },
+               y1: { position: 'right', min: 0, max: 100, grid: { display: false }, ticks: { color: '#d29922', font: { size: 9 } } },
+               x: { grid: { display: false }, ticks: { color: '#8b949e', font: { size: 9 } } } } }
   });
 }
 
@@ -264,11 +264,11 @@ function renderForexChart(data) {
   forexChart = new Chart(ctx, {
     type: 'bar', data: {
       labels: items.map(s => s.pair || s.symbol),
-      datasets: [{ label: 'Change %', data: items.map(s => s.change_pct), backgroundColor: items.map(s => s.change_pct >= 0 ? '#00ff4166' : '#ff003366'), borderRadius: 2 }]
+      datasets: [{ label: 'Change %', data: items.map(s => s.change_pct), backgroundColor: items.map(s => s.change_pct >= 0 ? '#3fb95066' : '#f8514966'), borderRadius: 3 }]
     },
     options: { indexAxis: 'y', responsive: true, maintainAspectRatio: true, plugins: { legend: { display: false }, tooltip: CHART_TOOLTIP },
-      scales: { x: { grid: { color: '#1a3a1a' }, ticks: { color: '#007722', font: { size: 9, family: "'Fira Code','Courier New',monospace" } } },
-               y: { grid: { display: false }, ticks: { color: '#007722', font: { size: 9, family: "'Fira Code','Courier New',monospace" } } } } }
+      scales: { x: { grid: { color: '#21262d' }, ticks: { color: '#8b949e', font: { size: 9 } } },
+               y: { grid: { display: false }, ticks: { color: '#8b949e', font: { size: 9 } } } } }
   });
 }
 
@@ -286,7 +286,7 @@ function renderSectorChart(data) {
     const vals = bySector[sec];
     return vals.reduce((a, b) => a + b, 0) / vals.length;
   });
-  const colors = ['#00ff41','#ff0033','#00e5ff','#ffb000','#ff0088','#00ff4188','#ff003388','#007722','#00e5ff88','#ffb00088'];
+  const colors = ['#3fb950','#f85149','#58a6ff','#d29922','#bc8cff','#79c0ff','#ff7b72','#8b949e','#3fb95088','#f8514988'];
   const ctx = document.getElementById('sectorChart').getContext('2d');
   if (sectorChart) sectorChart.destroy();
   sectorChart = new Chart(ctx, {
@@ -295,8 +295,8 @@ function renderSectorChart(data) {
       datasets: [{ label: 'Avg Change %', data: avgChanges, backgroundColor: avgChanges.map((v,i) => colors[i % colors.length]), borderRadius: 3 }]
     },
     options: { indexAxis: 'y', responsive: true, maintainAspectRatio: true, plugins: { legend: { display: false }, tooltip: CHART_TOOLTIP },
-      scales: { x: { grid: { color: '#1a3a1a' }, ticks: { color: '#007722', font: { size: 9, family: "'Fira Code','Courier New',monospace" } } },
-               y: { grid: { display: false }, ticks: { color: '#007722', font: { size: 9, family: "'Fira Code','Courier New',monospace" } } } } }
+      scales: { x: { grid: { color: '#21262d' }, ticks: { color: '#8b949e', font: { size: 9 } } },
+               y: { grid: { display: false }, ticks: { color: '#8b949e', font: { size: 9 } } } } }
   });
 }
 
@@ -309,9 +309,9 @@ function renderRadarChart(data) {
   radarChart = new Chart(ctx, {
     type: 'radar', data: {
       labels: ind.map(i => i.name.replace(/^SPY /, '')),
-      datasets: [{ label: 'Signal', data: ind.map(i => mapSignal(i.signal)), backgroundColor: '#00ff4122', borderColor: '#00ff41', pointBackgroundColor: '#00ff41', pointRadius: 3 }]
+      datasets: [{ label: 'Signal', data: ind.map(i => mapSignal(i.signal)), backgroundColor: '#58a6ff22', borderColor: '#58a6ff', pointBackgroundColor: '#58a6ff', pointRadius: 3 }]
     },
-    options: { responsive: true, maintainAspectRatio: true, scales: { r: { min: 0, max: 100, ticks: { display: false, color: '#007722' }, grid: { color: '#1a3a1a' }, angleLines: { color: '#1a3a1a' }, pointLabels: { color: '#00cc33', font: { size: 10, family: "'Fira Code','Courier New',monospace" } } } },
+    options: { responsive: true, maintainAspectRatio: true, scales: { r: { min: 0, max: 100, ticks: { display: false }, grid: { color: '#21262d' }, angleLines: { color: '#21262d' } } },
       plugins: { legend: { display: false }, tooltip: CHART_TOOLTIP } }
   });
 }
@@ -483,15 +483,15 @@ function renderDetailPriceChart(data) {
     type: 'line', data: {
       labels: extLabels,
       datasets: [
-        { label: 'BB Upper', data: [...bbUpper, null], borderColor: '#00772244', borderDash: [3,3], pointRadius: 0, fill: false },
-        { label: 'BB Middle', data: [...bbMiddle, null], borderColor: '#00772244', pointRadius: 0, fill: false },
-        { label: 'BB Lower', data: [...bbLower, null], borderColor: '#00772244', borderDash: [3,3], pointRadius: 0, fill: false },
-        { label: 'Price', data: extPrices, borderColor: '#00ff41', backgroundColor: '#00ff4122', fill: true, pointRadius: 1, tension: .2 },
+        { label: 'BB Upper', data: [...bbUpper, null], borderColor: '#8b949e44', borderDash: [3,3], pointRadius: 0, fill: false },
+        { label: 'BB Middle', data: [...bbMiddle, null], borderColor: '#8b949e44', pointRadius: 0, fill: false },
+        { label: 'BB Lower', data: [...bbLower, null], borderColor: '#8b949e44', borderDash: [3,3], pointRadius: 0, fill: false },
+        { label: 'Price', data: extPrices, borderColor: '#58a6ff', backgroundColor: '#58a6ff22', fill: true, pointRadius: 1, tension: .2 },
       ]
     },
-          options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { labels: { color: '#00cc33', font: { size: 9, family: "'Fira Code','Courier New',monospace" } } }, tooltip: CHART_TOOLTIP },
-      scales: { y: { grid: { color: '#1a3a1a' }, ticks: { color: '#007722', font: { size: 9, family: "'Fira Code','Courier New',monospace" } } },
-               x: { grid: { display: false }, ticks: { color: '#007722', font: { size: 8, family: "'Fira Code','Courier New',monospace" }, maxTicksLimit: 10 } } } }
+    options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { labels: { color: '#8b949e', font: { size: 9 } } }, tooltip: CHART_TOOLTIP },
+      scales: { y: { grid: { color: '#21262d' }, ticks: { color: '#8b949e', font: { size: 9 } } },
+               x: { grid: { display: false }, ticks: { color: '#8b949e', font: { size: 8 }, maxTicksLimit: 10 } } } }
   });
 }
 
@@ -503,13 +503,13 @@ function renderDetailRsiChart(data) {
     type: 'line', data: {
       labels: Array(vals.length).fill(''),
       datasets: [
-        { label: 'RSI', data: vals, borderColor: '#ffb000', pointRadius: 0, tension: .3 },
-        { label: 'Overbought', data: Array(vals.length).fill(70), borderColor: '#ff003344', pointRadius: 0, borderDash: [3,3], fill: false },
-        { label: 'Oversold', data: Array(vals.length).fill(30), borderColor: '#00ff4144', pointRadius: 0, borderDash: [3,3], fill: false },
+        { label: 'RSI', data: vals, borderColor: '#d29922', pointRadius: 0, tension: .3 },
+        { label: 'Overbought', data: Array(vals.length).fill(70), borderColor: '#f8514944', pointRadius: 0, borderDash: [3,3], fill: false },
+        { label: 'Oversold', data: Array(vals.length).fill(30), borderColor: '#3fb95044', pointRadius: 0, borderDash: [3,3], fill: false },
       ]
     },
-    options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { labels: { color: '#00cc33', font: { size: 8, family: "'Fira Code','Courier New',monospace" } } }, tooltip: CHART_TOOLTIP },
-      scales: { y: { min: 0, max: 100, grid: { color: '#1a3a1a' }, ticks: { color: '#007722', font: { size: 8, family: "'Fira Code','Courier New',monospace" } } },
+    options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { labels: { color: '#8b949e', font: { size: 8 } } }, tooltip: CHART_TOOLTIP },
+      scales: { y: { min: 0, max: 100, grid: { color: '#21262d' }, ticks: { color: '#8b949e', font: { size: 8 } } },
                x: { grid: { display: false }, ticks: { display: false } } } }
   });
 }
@@ -523,13 +523,13 @@ function renderDetailMacdChart(data) {
     type: 'bar', data: {
       labels: Array(macd.length).fill(''),
       datasets: [
-        { label: 'MACD', data: macd, type: 'line', borderColor: '#00e5ff', pointRadius: 0, tension: .3 },
-        { label: 'Signal', data: signal, type: 'line', borderColor: '#ffb000', pointRadius: 0, tension: .3 },
-        { label: 'Histogram', data: hist, backgroundColor: hist.map(h => h >= 0 ? '#00ff4166' : '#ff003366'), borderRadius: 1 },
+        { label: 'MACD', data: macd, type: 'line', borderColor: '#58a6ff', pointRadius: 0, tension: .3 },
+        { label: 'Signal', data: signal, type: 'line', borderColor: '#d29922', pointRadius: 0, tension: .3 },
+        { label: 'Histogram', data: hist, backgroundColor: hist.map(h => h >= 0 ? '#3fb95066' : '#f8514966'), borderRadius: 1 },
       ]
     },
-    options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { labels: { color: '#00cc33', font: { size: 8, family: "'Fira Code','Courier New',monospace" } } }, tooltip: CHART_TOOLTIP },
-      scales: { y: { grid: { color: '#1a3a1a' }, ticks: { color: '#007722', font: { size: 8, family: "'Fira Code','Courier New',monospace" } } },
+    options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { labels: { color: '#8b949e', font: { size: 8 } } }, tooltip: CHART_TOOLTIP },
+      scales: { y: { grid: { color: '#21262d' }, ticks: { color: '#8b949e', font: { size: 8 } } },
                x: { grid: { display: false }, ticks: { display: false } } } }
   });
 }
@@ -541,10 +541,10 @@ function renderDetailVolumeChart(data) {
   detailCharts.volume = new Chart(ctx, {
     type: 'bar', data: {
       labels: Array(volumes.length).fill(''),
-      datasets: [{ label: 'Volume', data: volumes, backgroundColor: volumes.map((v, i) => i > 0 && volumes[i] > volumes[i-1] ? '#00ff4144' : '#ff003344'), borderRadius: 1 }]
+      datasets: [{ label: 'Volume', data: volumes, backgroundColor: volumes.map((v, i) => i > 0 && volumes[i] > volumes[i-1] ? '#3fb95044' : '#f8514944'), borderRadius: 1 }]
     },
     options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { display: false }, tooltip: CHART_TOOLTIP },
-      scales: { y: { grid: { color: '#1a3a1a' }, ticks: { color: '#007722', font: { size: 8, family: "'Fira Code','Courier New',monospace" } } },
+      scales: { y: { grid: { color: '#21262d' }, ticks: { color: '#8b949e', font: { size: 8 } } },
                x: { grid: { display: false }, ticks: { display: false } } } }
   });
 }
@@ -588,7 +588,7 @@ async function loadCompareChart(symbols) {
     const r = await fetch(`/api/compare?symbols=${symbols.join(',')}`);
     const data = await r.json();
     if (!data.symbols || !data.symbols.length) { return; }
-    const colors = ['#00ff41','#ff0033','#00e5ff','#ffb000','#ff0088','#00ff4188','#ff003388','#00e5ff88'];
+    const colors = ['#3fb950','#f85149','#58a6ff','#d29922','#bc8cff','#79c0ff','#ff7b72','#8b949e'];
     const datasets = data.symbols.map((s, i) => ({
       label: s.symbol,
       data: s.returns || [],
@@ -600,8 +600,8 @@ async function loadCompareChart(symbols) {
     compareChartInstance = new Chart(ctx, {
       type: 'line', data: { labels: Array((data.symbols[0]?.returns || []).length).fill(''), datasets },
       options: { responsive: true, maintainAspectRatio: true,
-        plugins: { legend: { labels: { color: '#00cc33', font: { size: 9, family: "'Fira Code','Courier New',monospace" } } }, tooltip: CHART_TOOLTIP },
-        scales: { y: { grid: { color: '#1a3a1a' }, ticks: { color: '#007722', font: { size: 9, family: "'Fira Code','Courier New',monospace" } } },
+        plugins: { legend: { labels: { color: '#8b949e', font: { size: 9 } } }, tooltip: CHART_TOOLTIP },
+        scales: { y: { grid: { color: '#21262d' }, ticks: { color: '#8b949e', font: { size: 9 } } },
                  x: { grid: { display: false }, ticks: { display: false } } } }
     });
   } catch { }
