@@ -1,0 +1,6 @@
+services:
+  panel:
+    build: .
+    container_name: financial-panel
+    network_mode: host
+    restart: unless-stopped

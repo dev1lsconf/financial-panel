@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0d1117"/><stop offset="100%" stop-color="#161b22"/></linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#238636"/><stop offset="100%" stop-color="#3fb950"/></linearGradient>
+    <linearGradient id="red" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#da3633"/><stop offset="100%" stop-color="#f85149"/></linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#1f6feb"/><stop offset="100%" stop-color="#58a6ff"/></linearGradient>
+  </defs>
+  <rect width="800" height="520" fill="url(#bg)" rx="8"/>
+  
+  <!-- Header -->
+  <rect x="0" y="0" width="800" height="36" fill="#161b22" rx="8"/>
+  <rect x="0" y="28" width="800" height="8" fill="#161b22"/>
+  <text x="16" y="23" fill="#f0f6fc" font-size="13" font-weight="700" letter-spacing=".5">0880 HEADQUARTERS</text>
+  <rect x="620" y="8" width="160" height="20" rx="4" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="630" y="22" fill="#8b949e" font-size="9">AAPL &gt; Search...</text>
+  <text x="798" y="22" fill="#8b949e" font-size="8" text-anchor="end">updated 14:32</text>
+
+  <!-- Overview Cards -->
+  <rect x="12" y="44" width="112" height="40" rx="6" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+  <text x="22" y="58" fill="#484f58" font-size="8">Advancers</text>
+  <text x="22" y="74" fill="#3fb950" font-size="16" font-weight="700">14</text>
+  <rect x="132" y="44" width="112" height="40" rx="6" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+  <text x="142" y="58" fill="#484f58" font-size="8">Decliners</text>
+  <text x="142" y="74" fill="#f85149" font-size="16" font-weight="700">10</text>
+  <rect x="252" y="44" width="132" height="40" rx="6" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+  <text x="262" y="58" fill="#484f58" font-size="8">Best</text>
+  <text x="262" y="74" fill="#3fb950" font-size="13" font-weight="600">NVDA +27.6%</text>
+  <rect x="392" y="44" width="132" height="40" rx="6" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+  <text x="402" y="58" fill="#484f58" font-size="8">Worst</text>
+  <text x="402" y="74" fill="#f85149" font-size="13" font-weight="600">SNAP -17.8%</text>
+  <rect x="532" y="44" width="80" height="40" rx="6" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+  <text x="542" y="58" fill="#484f58" font-size="8">Crypto</text>
+  <text x="542" y="74" fill="#d29922" font-size="13" font-weight="600">12</text>
+  <rect x="620" y="44" width="168" height="40" rx="6" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+  <text x="630" y="58" fill="#484f58" font-size="8">Market Strength</text>
+  <text x="630" y="74" fill="#3fb950" font-size="13" font-weight="600">68% — Bullish</text>
+
+  <!-- Stock Chart + Table -->
+  <text x="16" y="108" fill="#8b949e" font-size="11" letter-spacing=".5" font-weight="600">STOCKS PERFORMANCE</text>
+  <rect x="12" y="114" width="460" height="140" rx="8" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+  <!-- Bar chart mockup -->
+  <rect x="30" y="200" width="16" height="40" rx="2" fill="#3fb950" opacity=".8"/>
+  <rect x="52" y="180" width="16" height="60" rx="2" fill="#3fb950" opacity=".8"/>
+  <rect x="74" y="210" width="16" height="30" rx="2" fill="#f85149" opacity=".8"/>
+  <rect x="96" y="170" width="16" height="70" rx="2" fill="#3fb950" opacity=".8"/>
+  <rect x="118" y="190" width="16" height="50" rx="2" fill="#f85149" opacity=".8"/>
+  <rect x="140" y="150" width="16" height="90" rx="2" fill="#3fb950" opacity=".8"/>
+  <rect x="162" y="200" width="16" height="40" rx="2" fill="#f85149" opacity=".8"/>
+  <rect x="184" y="195" width="16" height="45" rx="2" fill="#3fb950" opacity=".8"/>
+  <rect x="206" y="185" width="16" height="55" rx="2" fill="#3fb950" opacity=".8"/>
+  <rect x="228" y="205" width="16" height="35" rx="2" fill="#f85149" opacity=".8"/>
+  <rect x="250" y="175" width="16" height="65" rx="2" fill="#3fb950" opacity=".8"/>
+  <rect x="272" y="160" width="16" height="80" rx="2" fill="#f85149" opacity=".8"/>
+  <rect x="294" y="210" width="16" height="30" rx="2" fill="#3fb950" opacity=".8"/>
+  <rect x="316" y="195" width="16" height="45" rx="2" fill="#f85149" opacity=".8"/>
+  <rect x="338" y="185" width="16" height="55" rx="2" fill="#3fb950" opacity=".8"/>
+  <rect x="360" y="170" width="16" height="70" rx="2" fill="#f85149" opacity=".8"/>
+  <rect x="382" y="200" width="16" height="40" rx="2" fill="#3fb950" opacity=".8"/>
+  <rect x="404" y="190" width="16" height="50" rx="2" fill="#3fb950" opacity=".8"/>
+  <rect x="426" y="210" width="16" height="30" rx="2" fill="#f85149" opacity=".8"/>
+  <rect x="448" y="178" width="16" height="62" rx="2" fill="#3fb950" opacity=".8"/>
+
+  <!-- Stock Table mockup -->
+  <rect x="480" y="114" width="308" height="140" rx="8" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+  <text x="490" y="130" fill="#484f58" font-size="8">Ticker  Price  Chg%  Trend  Signal</text>
+  <text x="490" y="144" fill="#c9d1d9" font-size="8">NVDA  $126.45  +27.6%  ▲  Strong Up</text>
+  <text x="490" y="156" fill="#c9d1d9" font-size="8">INTC  $37.21  +23.9%  ▲  Strong Up</text>
+  <text x="490" y="168" fill="#c9d1d9" font-size="8">ASML  $789.3  +31.1%  ▲  Strong Up</text>
+  <text x="490" y="180" fill="#c9d1d9" font-size="8">SNAP  $11.24  -17.8%  ▼  Strong Down</text>
+  <text x="490" y="192" fill="#c9d1d9" font-size="8">WMT  $69.53  -12.1%  ▼  Strong Down</text>
+  <text x="490" y="204" fill="#c9d1d9" font-size="8">MSFT  $446.2  -10.4%  ▼  Strong Down</text>
+
+  <!-- Fear & Greed -->
+  <rect x="12" y="262" width="240" height="60" rx="8" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+  <text x="16" y="256" fill="#8b949e" font-size="11" letter-spacing=".5" font-weight="600">FEAR & GREED INDEX</text>
+  <text x="22" y="282" fill="#8b949e" font-size="8">Index: 42</text>
+  <text x="22" y="296" fill="#d29922" font-size="18" font-weight="700">Fear</text>
+  <rect x="22" y="305" width="196" height="6" rx="3" fill="#21262d"/>
+  <rect x="22" y="305" width="80" height="6" rx="3" fill="#d29922"/>
+
+  <!-- Sector Chart -->
+  <rect x="260" y="262" width="240" height="60" rx="8" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+  <text x="264" y="256" fill="#8b949e" font-size="11" letter-spacing=".5" font-weight="600">SECTORS</text>
+  <rect x="270" y="273" width="4" height="40" rx="1" fill="#f85149"/>
+  <rect x="278" y="280" width="4" height="33" rx="1" fill="#f85149"/>
+  <rect x="286" y="285" width="4" height="28" rx="1" fill="#3fb950"/>
+  <rect x="294" y="270" width="4" height="43" rx="1" fill="#3fb950"/>
+  <rect x="302" y="290" width="4" height="23" rx="1" fill="#f85149"/>
+  <rect x="310" y="278" width="4" height="35" rx="1" fill="#3fb950"/>
+  <rect x="318" y="295" width="4" height="18" rx="1" fill="#f85149"/>
+  <text x="270" y="318" fill="#8b949e" font-size="5">Energy Tech HC Fin Cons Semicon</text>
+
+  <!-- Forex -->
+  <rect x="508" y="262" width="280" height="60" rx="8" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+  <text x="512" y="256" fill="#8b949e" font-size="11" letter-spacing=".5" font-weight="600">FOREX HEATMAP</text>
+  <rect x="518" y="275" width="80" height="12" rx="2" fill="#f85149" opacity=".6"/>
+  <text x="600" y="285" fill="#f85149" font-size="7">USD/CAD +2.7%</text>
+  <rect x="518" y="290" width="60" height="12" rx="2" fill="#f85149" opacity=".5"/>
+  <text x="580" y="300" fill="#f85149" font-size="7">USD/CHF +2.1%</text>
+  <rect x="518" y="305" width="40" height="12" rx="2" fill="#f85149" opacity=".4"/>
+  <text x="560" y="315" fill="#f85149" font-size="7">USD/JPY +1.6%</text>
+
+  <!-- Weekly -->
+  <rect x="12" y="330" width="776" height="68" rx="8" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+  <text x="16" y="326" fill="#8b949e" font-size="11" letter-spacing=".5" font-weight="600">WEEKLY PERFORMANCE</text>
+  <text x="22" y="348" fill="#484f58" font-size="7">Asset  Mon  Tue  Wed  Thu  Fri  Avg</text>
+  <text x="22" y="360" fill="#c9d1d9" font-size="7">NVDA  +1.2%  +3.4%  -0.8%  +2.1%  +1.5%  +1.5%</text>
+  <text x="22" y="372" fill="#c9d1d9" font-size="7">AAPL  -0.3%  +0.8%  +1.2%  -0.5%  +0.1%  +0.3%</text>
+  <text x="22" y="384" fill="#c9d1d9" font-size="7">BTC   -1.1%  -0.6%  +2.3%  -0.4%  -1.8%  -0.3%</text>
+  <rect x="80" y="356" width="28" height="10" rx="2" fill="#23863633"/>
+  <rect x="110" y="356" width="28" height="10" rx="2" fill="#23863633"/>
+  <rect x="140" y="356" width="28" height="10" rx="2" fill="#da363333"/>
+  <rect x="170" y="356" width="28" height="10" rx="2" fill="#23863633"/>
+  <rect x="200" y="356" width="28" height="10" rx="2" fill="#23863633"/>
+
+  <!-- Detail Modal Preview -->
+  <rect x="12" y="406" width="776" height="105" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="22" y="424" fill="#f0f6fc" font-size="12" font-weight="700">NVDA Detail</text>
+  <text x="120" y="424" fill="#484f58" font-size="9">$126.45 | +27.64% | USD</text>
+  <text x="22" y="440" fill="#8b949e" font-size="8">RSI: 72.3  Vol: 18.5%  Sup: $98.15  Res: $132.40  Trend: Bullish</text>
+  <!-- Mini price chart line -->
+  <polyline points="22,478 50,460 80,470 110,440 140,450 170,430 200,445 230,420 260,435 290,415 320,425 350,400 380,410 410,390 440,405 470,385 500,395 530,375 560,410 590,395 620,380 650,370" fill="none" stroke="#58a6ff" stroke-width="1.5"/>
+  <polyline points="22,495 50,492 80,490 110,488 140,486 170,484 200,482 230,480 260,478 290,476 320,474 350,472 380,470 410,468 440,466 470,464 500,462 530,460 560,458 590,456 620,454 650,452" fill="none" stroke="#8b949e" stroke-width=".5" stroke-dasharray="2,2"/>
+  <!-- Pred cards -->
+  <rect x="670" y="430" width="50" height="34" rx="4" fill="#0d1117"/>
+  <text x="685" y="442" fill="#484f58" font-size="6" text-anchor="middle">Next Day</text>
+  <text x="685" y="457" fill="#3fb950" font-size="11" font-weight="700" text-anchor="middle">$132</text>
+  <rect x="728" y="430" width="50" height="34" rx="4" fill="#0d1117"/>
+  <text x="743" y="442" fill="#484f58" font-size="6" text-anchor="middle">Direction</text>
+  <text x="743" y="457" fill="#3fb950" font-size="11" font-weight="700" text-anchor="middle">UP</text>
+
+  <!-- Footer -->
+  <text x="400" y="515" fill="#484f58" font-size="7" text-anchor="middle">0880 Headquarters v1 · Docker · FastAPI · Chart.js · Yahoo Finance · CoinGecko</text>
+</svg>
