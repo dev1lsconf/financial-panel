@@ -12,7 +12,7 @@
 Dashboard financiero en tiempo real con datos de mercado, indicadores técnicos, predicciones y gráficos interactivos para **acciones, criptomonedas y forex**. Todos los datos provienen de **APIs gratuitas** — no se requieren API keys ni suscripciones.
 
 <p align="center">
-  <img src="assets/dashboard-preview.png" alt="Vista previa del Dashboard" width="800">
+  <img src="dashboard-preview.png" alt="Vista previa del Dashboard" width="800">
 </p>
 
 ---
