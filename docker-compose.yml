@@ -2,5 +2,6 @@ services:
   panel:
     build: .
     container_name: financial-panel
-    network_mode: host
+    ports:
+      - "8000:8000"
     restart: unless-stopped
