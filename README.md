@@ -12,7 +12,7 @@
 Dashboard financiero en tiempo real con datos de mercado, indicadores técnicos, predicciones y gráficos interactivos para **acciones, criptomonedas y forex**. Todos los datos provienen de **APIs gratuitas** — no se requieren API keys ni suscripciones.
 
 <p align="center">
-  <img src="assets/0880%20Headquarters.png" alt="Vista previa del Dashboard" width="800">
+  <img src="assets/Headquarters.png" alt="Vista previa del Dashboard" width="800">
 </p>
 
 ---
@@ -147,7 +147,7 @@ financial-panel/
 ├── requirements.txt            # Dependencias Python
 ├── README.md                   # Documentación
 ├── assets/
-│   └── 0880 Headquarters.png   # Captura de pantalla del dashboard
+│   └── Headquarters.png   # Captura de pantalla del dashboard
 │
 ├── app/
 │   ├── main.py                 # Backend FastAPI (~870 líneas)
